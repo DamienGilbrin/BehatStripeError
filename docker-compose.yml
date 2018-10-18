@@ -27,20 +27,9 @@ services:
         depends_on:
           - nginx
 
-# Only for paid Ngrok account
-#    ngrok:
-#        image: wernight/ngrok
-#        env_file:
-#            -  .env
-#        links:
-#           - nginx
-#        depends_on:
-#           - php
-
-
 #If use local selenium test
     hub:
-        image: elgalu/selenium
+        image: elgalu/selenium:3.14.0-p10 # Is latest, fixed on chrome 69
         volumes:
           - /dev/shm:/dev/shm
         privileged: true
@@ -55,7 +44,7 @@ services:
 
 #If use local selenium test
     chrome:
-        image: elgalu/selenium
+        image: elgalu/selenium:3.14.0-p10 # Is latest, fixed on chrome 69
         depends_on:
           - hub
         volumes:
